@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.courierpad.in">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Courierpad">
-        <activity android:name=".Order_detail">
-
-        </activity>
+        android:theme="@style/Theme.Courierpad"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Add_Agent"></activity>
+        <activity android:name=".Agent_Detail" />
+        <activity android:name=".View_Agents" />
+        <activity android:name=".Order_detail" />
         <activity android:name=".View_Orders" />
         <activity android:name=".Add_Order" />
         <activity
             android:name=".Admin_Home"
-            android:theme="@style/Theme.CourierpadNoActionBar" >
+            android:theme="@style/Theme.CourierpadNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,9 +30,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"

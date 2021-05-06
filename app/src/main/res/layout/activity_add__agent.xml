@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    >
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Add_Order"
+    tools:context=".Add_Agent"
     android:padding="15dp"
     android:orientation="vertical"
     >
@@ -16,7 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Order Detail"
+        android:text="Agent Detail"
         android:textSize="25sp"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
@@ -25,55 +27,46 @@
         />
 
     <EditText
+        android:id="@+id/add_agent_id"
         android:background="@drawable/edit_text"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:hint="Order Id"
+        android:hint="Agent Id"
         android:paddingLeft="10dp"
         android:textSize="15sp"
         android:textStyle="bold"
         />
     <EditText
-       
+        android:id="@+id/add_agent_name"
         android:background="@drawable/edit_text"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:hint="Client Name"
-        android:paddingLeft="10dp"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        />
-    <EditText
-        android:id="@+id/password_edit_text"
-        android:background="@drawable/edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:hint="Delivery address"
-        android:paddingLeft="10dp"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        />
-    <EditText
-        android:id="@+id/password_edit_text"
-        android:background="@drawable/edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:hint="Reciever Name"
+        android:hint="Agent Name"
         android:paddingLeft="10dp"
         android:textSize="15sp"
         android:textStyle="bold"
         />
 
     <EditText
-        android:id="@+id/password_edit_text"
+        android:id="@+id/add_agent_dob"
+        android:background="@drawable/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:inputType="date"
+        android:hint="DOB"
+        android:paddingLeft="10dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/add_agent_phone"
         android:background="@drawable/edit_text"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -85,12 +78,14 @@
         android:textStyle="bold"
         />
     <EditText
+        android:id="@+id/add_agent_doj"
         android:background="@drawable/edit_text"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:hint="Amount"
+        android:hint="Date Of Joining"
+        android:inputType="date"
         android:paddingLeft="10dp"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -101,7 +96,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Assign Delivery Agent"
+        android:text="Assign Agent Credetails"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginBottom="6dp"
@@ -109,26 +104,38 @@
         android:textColor="@color/myblack"
         />
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/add_order_spinner"
+    <EditText
+        android:id="@+id/add_agent_username"
+        android:background="@drawable/edit_text"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/spinner_bg"
-        android:gravity="center"
-        android:layout_gravity="center"
+        android:hint="Username"
+        android:paddingLeft="10dp"
         android:textSize="15sp"
-        android:spinnerMode="dropdown"
+        android:textStyle="bold"
+        />
+    <EditText
+        android:id="@+id/add_agent_password"
+        android:background="@drawable/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Passoword"
+        android:paddingLeft="10dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
         />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/login_btn"
+        android:id="@+id/add_agent_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
-        android:text="Add Order"
+        android:text="Add Agent"
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:background="@drawable/button"

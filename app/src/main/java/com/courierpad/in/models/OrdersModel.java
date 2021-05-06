@@ -8,7 +8,7 @@ import retrofit2.Response;
 
 public class OrdersModel implements Serializable {
 
-    public OrdersModel(order:OrdersModel) {
+    public OrdersModel(int order_id, String order_date, String order_client, String order_status, String order_receiver,String order_location , String order_phone) {
         this.order_id = order_id;
         this.order_date = order_date;
         this.order_client = order_client;
@@ -16,9 +16,9 @@ public class OrdersModel implements Serializable {
         this.order_location = order_location;
         this.order_phone = order_phone;
         this.order_status = order_status;
-        this.order_assigned_to = order_assigned_to;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+//        this.order_assigned_to = order_assigned_to;
+//        this.createdAt = createdAt;
+//        this.updatedAt = updatedAt;
     }
 
     /**

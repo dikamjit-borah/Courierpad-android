@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Order_detail">
+    tools:context=".Agent_Detail">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,13 +25,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order Detail"
+                android:text="Agent Detail"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/order_detail_id"
+                android:id="@+id/agent_detail_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -42,7 +42,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/order_detail_status"
+            android:id="@+id/agent_detail_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -71,51 +71,51 @@
             android:layout_height="wrap_content"
             android:text="Client Name"
             android:textSize="12sp"
-             />
+            />
 
         <TextView
-            android:id="@+id/order_detail_client_name"
+            android:id="@+id/agent_detail_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Funghsu Wanghru"
             android:textColor="@color/greenDark"
-             android:textSize="16sp"
-              />
+            android:textSize="16sp"
+            />
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Delivery Address"
+            android:text="DOB"
             android:textSize="12sp"
-              />
+            />
 
         <TextView
-            android:id="@+id/order_detail_order_address"
+            android:id="@+id/agent_detail_dob"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4th Avenue Beltola, Assam, India"
             android:textColor="@color/greenDark"
-             android:textSize="16sp"
-              />
+            android:textSize="16sp"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Reciever Name"
+            android:text="Date Of Joining"
             android:textSize="12sp"
-              />
+            />
 
         <TextView
-            android:id="@+id/order_detail_receiver_name"
+            android:id="@+id/agent_detail_doj"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gulugulu Singh"
             android:textColor="@color/greenDark"
-             android:textSize="16sp"
-              />
+            android:textSize="16sp"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -123,33 +123,18 @@
             android:layout_marginTop="20dp"
             android:text="Phone No"
             android:textSize="12sp"
-              />
+            />
 
         <TextView
-            android:id="@+id/order_detail_phone"
+            android:id="@+id/agent_detail_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="012345678"
             android:textColor="@color/greenDark"
-             android:textSize="16sp"
-              />
+            android:textSize="16sp"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Amount"
-            android:textSize="12sp"
-              />
 
-        <TextView
-            android:id="@+id/order_detail_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="500000"
-            android:textColor="@color/greenDark"
-             android:textSize="16sp"
-              />
 
     </LinearLayout>
 </LinearLayout>

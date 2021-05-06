@@ -22,6 +22,8 @@ class Admin_Home : AppCompatActivity() {
 
         val addOrderCard:CardView = findViewById(R.id.add_order_card)
         val viewOrder:CardView = findViewById(R.id.view_order_card)
+        val addAgent:CardView = findViewById(R.id.add_agent_card)
+        val viewAgents:CardView = findViewById(R.id.view_agent_card)
 
 
         addOrderCard.setOnClickListener{
@@ -32,6 +34,16 @@ class Admin_Home : AppCompatActivity() {
         viewOrder.setOnClickListener{
             val ordersIntent:Intent= Intent(applicationContext,View_Orders::class.java)
             startActivity(ordersIntent)
+        }
+
+        addAgent.setOnClickListener{
+            val addAgentIntent:Intent= Intent(applicationContext,Add_Agent::class.java)
+            startActivity(addAgentIntent)
+        }
+
+        viewAgents.setOnClickListener{
+            val viewAgentsIntent:Intent = Intent(applicationContext,View_Agents::class.java)
+            startActivity(viewAgentsIntent)
         }
     }
 }

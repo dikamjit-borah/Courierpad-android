@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ import com.courierpad.`in`.Order_detail
 import com.courierpad.`in`.R
 import com.courierpad.`in`.models.OrdersModel
 import org.w3c.dom.Text
+import java.lang.Exception
 
 class OrdersAdapter(context: Context,orders: ArrayList<OrdersModel>) :RecyclerView.Adapter<OrdersAdapter.OrderViewHolder>() {
 
@@ -45,10 +47,21 @@ class OrdersAdapter(context: Context,orders: ArrayList<OrdersModel>) :RecyclerVi
     }
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
-        holder.orderId.setText("# "+ordersArraylist[position].order_id)
-        holder.orderStatus.setText(""+ordersArraylist[position].order_status)
-        holder.clientName.setText(""+ordersArraylist[position].order_client)
-        holder.orderDate.setText(""+ordersArraylist[position].order_date.replaceAfterLast("T", ""))
+        val OrderID:String= ""+ordersArraylist[position].order_id
+        val OrderStatus:String= ""+ordersArraylist[position].order_status
+        val ClientName:String= ""+ordersArraylist[position].order_client
+        var OrderDate:String= ""+ordersArraylist[position].order_date
+
+        var OrderReciever:String= ""+ordersArraylist[position].order_receiver
+        var OrderLocation:String= ""+ordersArraylist[position].order_location
+        var OrderPhone:String= ""+ordersArraylist[position].order_phone
+
+
+        holder.orderId.setText("# "+OrderID)
+        holder.orderStatus.setText(OrderStatus)
+        holder.clientName.setText(ClientName)
+        OrderDate = OrderDate.replaceAfterLast("T", "")
+        holder.orderDate.setText(OrderDate.replace("T", ""))
 
         if(ordersArraylist[position].order_status == "Completed")
             holder.orderStatus.setBackgroundResource(R.drawable.status_card_completed)
@@ -57,6 +70,13 @@ class OrdersAdapter(context: Context,orders: ArrayList<OrdersModel>) :RecyclerVi
 
         holder.itemView.setOnClickListener{
             val orderDetailIntent:Intent = Intent(context, Order_detail::class.java)
+            orderDetailIntent.putExtra("orderId",OrderID)
+            orderDetailIntent.putExtra("orderStatus",OrderStatus)
+            orderDetailIntent.putExtra("clientName",ClientName)
+            orderDetailIntent.putExtra("orderDate",OrderDate)
+            orderDetailIntent.putExtra("orderReceiver",OrderReciever)
+            orderDetailIntent.putExtra("orderLocation",OrderLocation)
+            orderDetailIntent.putExtra("orderPhone",OrderPhone)
             context.startActivity(orderDetailIntent)
         }
 

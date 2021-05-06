@@ -1,5 +1,6 @@
 package com.courierpad.`in`
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import kotlin.reflect.typeOf
 
 
 class View_Orders : AppCompatActivity() {
+    lateinit var orderRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,44 +27,48 @@ class View_Orders : AppCompatActivity() {
 //        val order1:OrdersModel = OrdersModel(1234,"Pending")
 //        val order2:OrdersModel = OrdersModel(1234534,"Completed")
 //        val order3:OrdersModel = OrdersModel(13452434,"Pending")
-        getDataFromApi(orders)
+        getDataFromApi(orders,this)
+
 
 //        orders.add(order1)
 //        orders.add(order2)
 //        orders.add(order3)
-//        val orderRecyclerView: RecyclerView = findViewById(R.id.order_recycler_view)
-//        val orderAdapter:OrdersAdapter= OrdersAdapter( this,orders)
-//
-//        orderRecyclerView.adapter = orderAdapter
-//
-//        val linearLayoutManger = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
-//        orderRecyclerView.layoutManager = linearLayoutManger
+         orderRecyclerView= findViewById(R.id.order_recycler_view)
 
     }
 
-    private fun getDataFromApi(orders:ArrayList<OrdersModel>) {
+    private fun getDataFromApi(orders:ArrayList<OrdersModel>,context: Context) {
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://192.168.29.207:8080/api/")
+            .baseUrl("http://courierpad.herokuapp.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)
 
-        val retrofitData = retrofitBuilder.getData()
+        val retrofitData = retrofitBuilder.getAllOrders()
 
         retrofitData.enqueue(object : Callback<List<OrdersModel>?> {
-            override fun onFailure(call: Call<List<OrdersModel>?>, t: Throwable) {
-                Toast.makeText(applicationContext," sfvdgdfgsfdg "+t.message,Toast.LENGTH_SHORT).show()
-            }
 
             override fun onResponse(
                 call: Call<List<OrdersModel>?>,
                 response: Response<List<OrdersModel>?>
             ) {
-               val responseBody = response.body()
+                val responseBody = response.body()
+               // Toast.makeText(applicationContext,"res" + responseBody!!.get(0).order_client,Toast.LENGTH_SHORT).show()
+
                 for (item in responseBody!!){
-                    val order:OrdersModel = OrdersModel(item)
-                   Toast.makeText(applicationContext, ""+ "jgjhg", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(applicationContext,"test",Toast.LENGTH_SHORT).show()
+                    val order:OrdersModel = OrdersModel(item.order_id, item.order_date, item.order_client, item.order_status, item.order_receiver, item.order_location, item.order_phone)
+                    orders.add(order)
                 }
+                val orderAdapter:OrdersAdapter= OrdersAdapter( context,orders)
+
+                orderRecyclerView.adapter = orderAdapter
+
+                val linearLayoutManger = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
+                orderRecyclerView.layoutManager = linearLayoutManger
+            }
+            override fun onFailure(call: Call<List<OrdersModel>?>, t: Throwable) {
+                Toast.makeText(applicationContext," Error "+t.message,Toast.LENGTH_SHORT).show()
             }
         })
     }
