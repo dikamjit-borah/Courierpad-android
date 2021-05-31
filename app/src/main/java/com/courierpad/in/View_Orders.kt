@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.courierpad.`in`.adapters.OrdersAdapter
 import com.courierpad.`in`.apiHandling.ApiInterface
+import com.courierpad.`in`.apiHandling.SessionManager
 import com.courierpad.`in`.models.OrdersModel
+import com.courierpad.`in`.utilities.LoadingDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,15 +21,21 @@ import kotlin.reflect.typeOf
 
 class View_Orders : AppCompatActivity() {
     lateinit var orderRecyclerView: RecyclerView
+    private lateinit var loading: LoadingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view__orders)
+
+        loading = LoadingDialog(this)
         val orders:ArrayList<OrdersModel> = arrayListOf()
 //        val order1:OrdersModel = OrdersModel(1234,"Pending")
 //        val order2:OrdersModel = OrdersModel(1234534,"Completed")
 //        val order3:OrdersModel = OrdersModel(13452434,"Pending")
+        loading.startLoading()
         getDataFromApi(orders,this)
+
+
 
 
 //        orders.add(order1)
@@ -52,6 +60,7 @@ class View_Orders : AppCompatActivity() {
                 call: Call<List<OrdersModel>?>,
                 response: Response<List<OrdersModel>?>
             ) {
+                loading.Dismiss()
                 val responseBody = response.body()
                // Toast.makeText(applicationContext,"res" + responseBody!!.get(0).order_client,Toast.LENGTH_SHORT).show()
 
@@ -66,6 +75,9 @@ class View_Orders : AppCompatActivity() {
 
                 val linearLayoutManger = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
                 orderRecyclerView.layoutManager = linearLayoutManger
+
+
+
             }
             override fun onFailure(call: Call<List<OrdersModel>?>, t: Throwable) {
                 Toast.makeText(applicationContext," Error "+t.message,Toast.LENGTH_SHORT).show()

@@ -25,6 +25,7 @@
         />
 
     <EditText
+        android:id="@+id/add_order_order_id"
         android:background="@drawable/edit_text"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -36,7 +37,7 @@
         android:textStyle="bold"
         />
     <EditText
-       
+       android:id="@+id/add_order_client_name"
         android:background="@drawable/edit_text"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -48,7 +49,7 @@
         android:textStyle="bold"
         />
     <EditText
-        android:id="@+id/password_edit_text"
+        android:id="@+id/add_order_delivery_address"
         android:background="@drawable/edit_text"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -60,7 +61,7 @@
         android:textStyle="bold"
         />
     <EditText
-        android:id="@+id/password_edit_text"
+        android:id="@+id/add_order_receiver_name"
         android:background="@drawable/edit_text"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -73,7 +74,7 @@
         />
 
     <EditText
-        android:id="@+id/password_edit_text"
+        android:id="@+id/add_order_phone_no"
         android:background="@drawable/edit_text"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -85,6 +86,7 @@
         android:textStyle="bold"
         />
     <EditText
+        android:id="@+id/add_order_amount"
         android:background="@drawable/edit_text"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -116,14 +118,11 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/spinner_bg"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textSize="15sp"
         android:spinnerMode="dropdown"
         />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/login_btn"
+        android:id="@+id/add_order_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="14dp"

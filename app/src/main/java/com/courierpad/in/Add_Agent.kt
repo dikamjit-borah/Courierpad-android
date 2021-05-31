@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import com.courierpad.`in`.apiHandling.ApiInterface
 import com.courierpad.`in`.models.AgentModel
+import com.courierpad.`in`.utilities.LoadingDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,12 +15,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class Add_Agent : AppCompatActivity() {
+    private lateinit var loading: LoadingDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add__agent)
-
+        loading = LoadingDialog(this)
 
         findViewById<AppCompatButton>(R.id.add_agent_btn).setOnClickListener{
+            loading.startLoading()
 
             val agentId:Int = findViewById<TextView>(R.id.add_agent_id).text.toString().toInt()
             val agentName:String = findViewById<TextView>(R.id.add_agent_name).text.toString()
@@ -55,6 +58,7 @@ class Add_Agent : AppCompatActivity() {
 
             ) {
                 // Toast.makeText(applicationContext,"res" + responseBody!!.get(0).order_client,Toast.LENGTH_SHORT).show()
+                loading.Dismiss()
                 Toast.makeText(applicationContext,"Agent added", Toast.LENGTH_SHORT).show()
 
 

@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Courierpad"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Add_Agent"></activity>
+        <activity android:name=".MyOrders"></activity>
+        <activity android:name=".Add_Agent" />
         <activity android:name=".Agent_Detail" />
         <activity android:name=".View_Agents" />
         <activity android:name=".Order_detail" />
@@ -22,15 +23,17 @@
         <activity
             android:name=".Admin_Home"
             android:theme="@style/Theme.CourierpadNoActionBar">
+
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"

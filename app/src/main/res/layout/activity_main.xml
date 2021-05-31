@@ -35,13 +35,46 @@
             android:text="Log in to continue"
             />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/myblack"
+            android:text="Select User Type"
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/loginRadioGrp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radiobtnadmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Admin"/>
+                <RadioButton
+                    android:id="@+id/radiobtnagent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agent"
+                    android:layout_marginLeft="15dp"
+                    />
+            </RadioGroup>
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/myblack"
             android:text="Username"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:textStyle="bold"
             />
         <EditText
@@ -72,7 +105,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:hint="Enter your password"
-            android:inputType="numberPassword"
+            android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:textSize="15sp"
             android:textStyle="bold"
