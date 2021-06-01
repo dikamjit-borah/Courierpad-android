@@ -51,7 +51,7 @@ class Add_Order : AppCompatActivity() , AdapterView.OnItemSelectedListener{
 
             val orderDate:String = LocalDate.now().toString()
             val orderStatus:String = "IN TRANSIT"
-            val agentId = selectedAgent.replaceBefore("#","").replace("#","")
+            val agentId = selectedAgent.replaceAfter(" ","").replace("#","").replace(" ", "")
 
 
            Log.e("ddasdd", orderIdx)
@@ -93,7 +93,7 @@ class Add_Order : AppCompatActivity() , AdapterView.OnItemSelectedListener{
                 loading.Dismiss()
                 val responseBody = response.body()
                 for (item in responseBody!!){
-                    availableAgents.add(item.agent_name+"  #"+item.agent_id)
+                    availableAgents.add("#"+item.agent_id + " "+item.agent_name)
                 }
 
                 val spinner:Spinner = findViewById(R.id.add_order_spinner)

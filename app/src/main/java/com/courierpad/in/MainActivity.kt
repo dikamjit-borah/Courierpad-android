@@ -67,28 +67,25 @@ class MainActivity : AppCompatActivity() {
                 val res = response!!.body()
                 //sessionManager.saveAuthToken(token)
 
-                val token = res!!.get("data").asJsonObject["token"].toString()
-                Log.e("hyyy", ""+token)
-                Toast.makeText(applicationContext, "" + res, Toast.LENGTH_SHORT).show()
+                val status = res!!.get("status").toString()
+                if(status  == "404")
+                    Toast.makeText(applicationContext, "User id not found", Toast.LENGTH_SHORT).show()
+                else if(status  == "401")
+                    Toast.makeText(applicationContext, "Invalid credentials", Toast.LENGTH_SHORT).show()
+                else{
 
-                if(selectedUserType == "Admin")
-                    startActivity(Intent(applicationContext,Admin_Home::class.java))
-                else
-                    startActivity(Intent(applicationContext,MyOrders::class.java))
-
-                /*if (response != null && response.body()?.status == "200") {
-                    val res = response.body()
-                    //sessionManager.saveAuthToken(token)
+                    val token = res!!.get("data").asJsonObject["token"].toString()
 
                     Toast.makeText(applicationContext, "" + res, Toast.LENGTH_SHORT).show()
-                }
-                else
-                    Toast.makeText(applicationContext,"Incorrect Credential",Toast.LENGTH_SHORT).show()
 
-                if(selectedUserType == "Admin")
-                    startActivity(Intent(applicationContext,Admin_Home::class.java))
-                else
-                    startActivity(Intent(applicationContext,MyOrders::class.java))*/
+                    if(selectedUserType == "Admin")
+                        startActivity(Intent(applicationContext,Admin_Home::class.java))
+                    else
+                        startActivity(Intent(applicationContext,MyOrders::class.java))
+
+
+                }
+
             }
             override fun onFailure(call: Call<JsonObject>?, t: Throwable) {
                 Toast.makeText(applicationContext," Error "+t.message, Toast.LENGTH_SHORT).show()

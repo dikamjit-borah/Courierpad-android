@@ -47,14 +47,14 @@ class AgentAdapter(context: Context,agents: ArrayList<AgentModel>) :RecyclerView
 
     override fun onBindViewHolder(holder: AgentViewHolder, position: Int) {
         val AgentId:String= ""+agentsArraylist[position].agent_id
-//      val agentStatus:String= ""+agentsArraylist[position].
+    //  val agentStatus:String= ""+agentsArraylist[position].
         val AgentName:String= ""+agentsArraylist[position].agent_name
         val AgentDob:String= ""+agentsArraylist[position].agent_dob
         val AgentDoj:String= ""+agentsArraylist[position].agent_doj
         val AgentPhone:String= ""+agentsArraylist[position].agent_phone
 
 
-        holder.agentId.setText("# "+AgentId)
+        holder.agentId.setText("#"+AgentId)
         holder.agentName.setText(AgentName)
 
 //        if(agentsArraylist[position].agent_status == "Completed")
