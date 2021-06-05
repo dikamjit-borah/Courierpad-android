@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.courierpad.`in`.adapters.OrdersAdapter
 import com.courierpad.`in`.apiHandling.ApiInterface
 import com.courierpad.`in`.models.OrdersModel
+import com.courierpad.`in`.utilities.CONSTANTS
 import com.courierpad.`in`.utilities.LoadingDialog
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,7 +39,7 @@ class MyOrders : AppCompatActivity() {
             .build()
             .create(ApiInterface::class.java)
 
-        val retrofitData = retrofitBuilder.getMyOrders("27")
+        val retrofitData = retrofitBuilder.getMyOrders(CONSTANTS.AGENT_ID)
 
         retrofitData.enqueue(object : Callback<List<OrdersModel>?> {
 

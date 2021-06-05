@@ -9,6 +9,7 @@ import com.courierpad.`in`.apiHandling.ApiInterface
 import com.courierpad.`in`.apiHandling.SessionManager
 import com.courierpad.`in`.models.AgentModel
 import com.courierpad.`in`.models.UserModel
+import com.courierpad.`in`.utilities.CONSTANTS
 import com.courierpad.`in`.utilities.LoadingDialog
 import com.google.gson.JsonObject
 import retrofit2.Call
@@ -19,6 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
+    var userId:Int = 0;
     private lateinit var sessionManager: SessionManager
     private lateinit var selectedUserType: String
     private lateinit var loading:LoadingDialog
@@ -39,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             val intSelectButton: Int = userTypeRadioGroup!!.checkedRadioButtonId
             val selectedRadioBtn:RadioButton = findViewById(intSelectButton)
             selectedUserType=selectedRadioBtn.text.toString()
-            val userId:Int = userNameEditText.text.toString().toInt()
+             userId= userNameEditText.text.toString().toInt()
             val password:String = passwordEditText.text.toString()
             val userDataObj:UserModel = UserModel(selectedUserType.toLowerCase(),userId,password)
             loading.startLoading()
@@ -81,7 +83,11 @@ class MainActivity : AppCompatActivity() {
                     if(selectedUserType == "Admin")
                         startActivity(Intent(applicationContext,Admin_Home::class.java))
                     else
+                    {
+                        CONSTANTS.AGENT_ID  = userId.toString()
                         startActivity(Intent(applicationContext,MyOrders::class.java))
+                    }
+
 
 
                 }
