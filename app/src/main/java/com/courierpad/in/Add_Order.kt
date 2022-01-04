@@ -1,6 +1,7 @@
 package com.courierpad.`in`
 
 import android.content.Context
+import android.icu.text.SimpleDateFormat
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,6 +24,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.time.LocalDate
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Add_Order : AppCompatActivity() , AdapterView.OnItemSelectedListener{
     lateinit var availableAgents:MutableList<String>
@@ -49,7 +52,9 @@ class Add_Order : AppCompatActivity() , AdapterView.OnItemSelectedListener{
             val receiverName:String = findViewById<EditText>(R.id.add_order_receiver_name).text.toString()
             val phoneNo:String = findViewById<EditText>(R.id.add_order_phone_no).text.toString()
 
-            val orderDate:String = LocalDate.now().toString()
+//            val orderDate:String = LocalDate.now().toString()
+           val date = Date()
+           val orderDate: String = SimpleDateFormat("yyyy-MM-dd").format(date)
             val orderStatus:String = "IN TRANSIT"
             val agentId = selectedAgent.replaceAfter(" ","").replace("#","").replace(" ", "")
 

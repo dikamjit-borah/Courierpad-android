@@ -5,7 +5,6 @@ import retrofit2.Call
 import com.courierpad.`in`.models.OrdersModel
 import com.courierpad.`in`.models.UserModel
 import com.google.gson.JsonObject
-import org.json.JSONObject
 import retrofit2.http.*
 
 interface ApiInterface {
@@ -40,4 +39,7 @@ interface ApiInterface {
 
     @PUT("admin/order/{id}")
     fun updateOrder(@Path("id")  order_id:String) : Call<JsonObject>
+
+    @POST("agent/updateOrder")
+    fun completeOrder( @Body body: JsonObject):Call<JsonObject>
 }
