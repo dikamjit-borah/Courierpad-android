@@ -34,7 +34,7 @@ class MyOrders : AppCompatActivity() {
 
     private fun getDataFromApi(orders:ArrayList<OrdersModel>,context: Context) {
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://courierpad.herokuapp.com/api/")
+            .baseUrl("http://192.168.29.109:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)

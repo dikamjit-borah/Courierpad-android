@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun postDataToApi(userDataObj: UserModel) {
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://courierpad.herokuapp.com/api/")
+            .baseUrl("http://192.168.29.109:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)
@@ -76,7 +76,8 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "Invalid credentials", Toast.LENGTH_SHORT).show()
                 else{
 
-                    val token = res!!.get("data").asJsonObject["token"].toString()
+                    val jsonobj:JsonObject = res!!.get("data") as JsonObject;
+                    val token = jsonobj["token"].toString()
 
                     Toast.makeText(applicationContext, "" + res, Toast.LENGTH_SHORT).show()
 

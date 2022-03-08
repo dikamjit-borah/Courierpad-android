@@ -2,6 +2,7 @@ package com.courierpad.`in`
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
@@ -22,7 +23,7 @@ class Add_Agent : AppCompatActivity() {
         loading = LoadingDialog(this)
 
         findViewById<AppCompatButton>(R.id.add_agent_btn).setOnClickListener{
-            loading.startLoading()
+
 
             val agentId:Int = findViewById<TextView>(R.id.add_agent_id).text.toString().toInt()
             val agentName:String = findViewById<TextView>(R.id.add_agent_name).text.toString()
@@ -32,8 +33,8 @@ class Add_Agent : AppCompatActivity() {
 
             val agentUserName:String = findViewById<TextView>(R.id.add_agent_username).text.toString()
             val agentPassword:String = findViewById<TextView>(R.id.add_agent_password).text.toString()
-
-            val agentDataModelObj:AgentModel = AgentModel(agentId,agentName,agentDob,agentDoj,agentPhone,agentUserName,agentPassword)
+            val agentEmail:String = findViewById<EditText>(R.id.tvEmail).text.toString()
+            val agentDataModelObj:AgentModel = AgentModel(agentId,agentName,agentDob,agentDoj,agentPhone,agentUserName,agentPassword, agentEmail)
 
             postDataToApi(agentDataModelObj)
 
@@ -42,8 +43,9 @@ class Add_Agent : AppCompatActivity() {
 
 
     private fun postDataToApi(agentDataModelObj: AgentModel) {
+        loading.startLoading()
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://courierpad.herokuapp.com/api/")
+            .baseUrl("http://192.168.29.109:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)

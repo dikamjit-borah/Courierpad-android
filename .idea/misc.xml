@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/Android/CourierPad/08-03/Courierpad-android/app/src/main/res/layout/activity_add__agent.xml" value="0.21145833333333333" />
+        <entry key="..\:/Projects/Android/CourierPad/08-03/Courierpad-android/app/src/main/res/layout/activity_add__order.xml" value="0.2015625" />
+        <entry key="..\:/Projects/Android/CourierPad/08-03/Courierpad-android/app/src/main/res/layout/activity_admin__home.xml" value="0.2015625" />
+        <entry key="..\:/Projects/Android/CourierPad/08-03/Courierpad-android/app/src/main/res/layout/activity_main.xml" value="0.2015625" />
+        <entry key="..\:/Projects/Android/CourierPad/08-03/Courierpad-android/app/src/main/res/layout/activity_order_detail.xml" value="0.2015625" />
+        <entry key="..\:/Projects/Android/CourierPad/08-03/Courierpad-android/app/src/main/res/layout/activity_order_detail_unassigned.xml" value="0.33" />
+        <entry key="..\:/Projects/Android/CourierPad/08-03/Courierpad-android/app/src/main/res/layout/activity_orders.xml" value="0.2015625" />
+        <entry key="..\:/Projects/Android/CourierPad/08-03/Courierpad-android/app/src/main/res/layout/activity_unassigned_orders.xml" value="0.2015625" />
+        <entry key="..\:/Projects/Android/CourierPad/08-03/Courierpad-android/app/src/main/res/layout/activity_view__orders.xml" value="0.2015625" />
         <entry key="..\:/Projects/Android/CourierPad/Courierpad-android/app/src/main/res/drawable/button.xml" value="0.22135416666666666" />
         <entry key="..\:/Projects/Android/CourierPad/Courierpad-android/app/src/main/res/drawable/status_card_completed.xml" value="0.22135416666666666" />
         <entry key="..\:/Projects/Android/CourierPad/Courierpad-android/app/src/main/res/layout/activity_admin__home.xml" value="0.20520833333333333" />

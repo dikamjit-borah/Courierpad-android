@@ -1,7 +1,7 @@
 package com.courierpad.in.models;
 
 public class AgentModel {
-    public AgentModel(int agent_id, String agent_name, String agent_dob, String agent_doj, String agent_phone, String agent_username, String agent_password) {
+    public AgentModel(int agent_id, String agent_name, String agent_dob, String agent_doj, String agent_phone, String agent_username, String agent_password, String agent_email) {
         this.agent_id = agent_id;
         this.agent_name = agent_name;
         this.agent_dob = agent_dob;
@@ -9,6 +9,7 @@ public class AgentModel {
         this.agent_phone = agent_phone;
         this.agent_username = agent_username;
         this.agent_password = agent_password;
+        this.agent_email = agent_email;
     }
     public AgentModel(int agent_id, String agent_name, String agent_dob, String agent_doj, String agent_phone) {
         this.agent_id = agent_id;
@@ -87,5 +88,13 @@ public class AgentModel {
      private String agent_phone;
      private String agent_username;
      private String agent_password;
+    String agent_email;
 
+    public String getAgent_email() {
+        return agent_email;
+    }
+
+    public void setAgent_email(String agent_email) {
+        this.agent_email = agent_email;
+    }
 }

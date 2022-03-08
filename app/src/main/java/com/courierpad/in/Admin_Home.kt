@@ -32,7 +32,7 @@ class Admin_Home : AppCompatActivity() {
         }
 
         viewOrder.setOnClickListener{
-            val ordersIntent:Intent= Intent(applicationContext,View_Orders::class.java)
+            val ordersIntent:Intent= Intent(applicationContext,OrdersActivity::class.java)
             startActivity(ordersIntent)
         }
 

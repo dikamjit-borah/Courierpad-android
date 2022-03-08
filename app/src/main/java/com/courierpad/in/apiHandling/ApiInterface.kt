@@ -16,7 +16,7 @@ interface ApiInterface {
 
 
     @GET("admin/view_orders")
-    fun getAllOrders(): Call<List<OrdersModel>>
+    fun getAllOrders(@Query(value = "assigned", encoded = true) assigned:Int ): Call<List<OrdersModel>>
 
     @Headers("Content-Type: application/json")
     @POST("admin/add_order")
@@ -42,4 +42,8 @@ interface ApiInterface {
 
     @POST("agent/updateOrder")
     fun completeOrder( @Body body: JsonObject):Call<JsonObject>
+
+    @Headers("Content-Type: application/json")
+    @POST("admin/partial_order")
+    fun addPartialBody(@Body body:JsonObject): Call<Array<Int>>
 }

@@ -2,6 +2,7 @@ package com.courierpad.`in`
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,6 +11,7 @@ import com.courierpad.`in`.adapters.OrdersAdapter
 import com.courierpad.`in`.apiHandling.ApiInterface
 import com.courierpad.`in`.apiHandling.SessionManager
 import com.courierpad.`in`.models.OrdersModel
+import com.courierpad.`in`.utilities.CONSTANTS
 import com.courierpad.`in`.utilities.LoadingDialog
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,7 +28,7 @@ class View_Orders : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view__orders)
-
+        CONSTANTS.isAssignedOrder = 1
         loading = LoadingDialog(this)
         val orders:ArrayList<OrdersModel> = arrayListOf()
 //        val order1:OrdersModel = OrdersModel(1234,"Pending")
@@ -47,12 +49,12 @@ class View_Orders : AppCompatActivity() {
 
     private fun getDataFromApi(orders:ArrayList<OrdersModel>,context: Context) {
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://courierpad.herokuapp.com/api/")
+            .baseUrl("http://192.168.29.109:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)
 
-        val retrofitData = retrofitBuilder.getAllOrders()
+        val retrofitData = retrofitBuilder.getAllOrders(1)
 
         retrofitData.enqueue(object : Callback<List<OrdersModel>?> {
 
@@ -60,6 +62,8 @@ class View_Orders : AppCompatActivity() {
                 call: Call<List<OrdersModel>?>,
                 response: Response<List<OrdersModel>?>
             ) {
+
+                Log.d("TAG", "onResponse: View Assigned Orders"+ response.body())
                 loading.Dismiss()
                 val responseBody = response.body()
                // Toast.makeText(applicationContext,"res" + responseBody!!.get(0).order_client,Toast.LENGTH_SHORT).show()

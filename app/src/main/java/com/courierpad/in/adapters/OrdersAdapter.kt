@@ -13,9 +13,11 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.courierpad.`in`.MyOrders
 import com.courierpad.`in`.Order_detail
+import com.courierpad.`in`.Order_detail_unassigned
 import com.courierpad.`in`.R
 import com.courierpad.`in`.apiHandling.ApiInterface
 import com.courierpad.`in`.models.OrdersModel
+import com.courierpad.`in`.utilities.CONSTANTS
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -81,7 +83,7 @@ class OrdersAdapter(context: Context, orders: ArrayList<OrdersModel>) :
 
 
         holder.orderId.text = "# " + OrderID
-        holder.orderStatus.text = OrderStatus
+        if (CONSTANTS.isAssignedOrder == 1) holder.orderStatus.text = OrderStatus else holder.orderStatus.text = "Unassigned"
         holder.clientName.text = ClientName
         OrderDate = OrderDate.replaceAfterLast("T", "")
         holder.orderDate.text = OrderDate.replace("T", "")
@@ -92,7 +94,9 @@ class OrdersAdapter(context: Context, orders: ArrayList<OrdersModel>) :
             holder.orderStatus.setBackgroundResource(R.drawable.status_card_pending)
 
         holder.itemView.setOnClickListener {
-            val orderDetailIntent: Intent = Intent(context, Order_detail::class.java)
+            var orderDetailIntent: Intent = Intent(context, Order_detail::class.java)
+            if(CONSTANTS.isAssignedOrder == 0)
+                orderDetailIntent = Intent(context, Order_detail_unassigned::class.java)
             orderDetailIntent.putExtra("orderId", OrderID)
             orderDetailIntent.putExtra("orderStatus", OrderStatus)
             orderDetailIntent.putExtra("clientName", ClientName)
@@ -107,7 +111,7 @@ class OrdersAdapter(context: Context, orders: ArrayList<OrdersModel>) :
 
     private fun updateOrder(OrderID: String) {
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://courierpad.herokuapp.com/api/")
+            .baseUrl("http://192.168.29.109:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)

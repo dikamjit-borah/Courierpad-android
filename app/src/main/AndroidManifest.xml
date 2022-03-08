@@ -13,7 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Courierpad"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MyOrders"></activity>
+        <activity
+            android:name=".Order_detail_unassigned"
+            android:exported="false" />
+        <activity
+            android:name=".Unassigned_Orders"
+            android:exported="false" />
+        <activity
+            android:name=".OrdersActivity"
+            android:exported="false" />
+        <activity android:name=".MyOrders" />
         <activity android:name=".Add_Agent" />
         <activity android:name=".Agent_Detail" />
         <activity android:name=".View_Agents" />
@@ -22,9 +31,7 @@
         <activity android:name=".Add_Order" />
         <activity
             android:name=".Admin_Home"
-            android:theme="@style/Theme.CourierpadNoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.CourierpadNoActionBar" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">

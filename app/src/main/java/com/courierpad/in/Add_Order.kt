@@ -39,32 +39,40 @@ class Add_Order : AppCompatActivity() , AdapterView.OnItemSelectedListener{
         setContentView(R.layout.activity_add__order)
         loading = LoadingDialog(this)
         loading.startLoading()
+        selectedAgent = ""
 
         getDataFromApi()
         val btn =  findViewById<AppCompatButton>(R.id.add_order_btn)
        btn.setOnClickListener{
 //           Log.e("add_order", ""+ selectedAgent)
-           loading.startLoading()
+
 
             val orderIdx:String = findViewById<EditText>(R.id.add_order_order_id).text.toString()
             val clientName:String = findViewById<EditText>(R.id.add_order_client_name).text.toString()
             val deliveryAddress:String = findViewById<EditText>(R.id.add_order_delivery_address).text.toString()
             val receiverName:String = findViewById<EditText>(R.id.add_order_receiver_name).text.toString()
             val phoneNo:String = findViewById<EditText>(R.id.add_order_phone_no).text.toString()
-
+           val email:String = findViewById<EditText>(R.id.tvEmail).text.toString()
 //            val orderDate:String = LocalDate.now().toString()
            val date = Date()
            val orderDate: String = SimpleDateFormat("yyyy-MM-dd").format(date)
             val orderStatus:String = "IN TRANSIT"
-            val agentId = selectedAgent.replaceAfter(" ","").replace("#","").replace(" ", "")
+            var agentId = selectedAgent.replaceAfter(" ","").replace("#","").replace(" ", "")
+           if (agentId.isNullOrBlank())
+           {
+               Toast.makeText(applicationContext, "Please select an agent", Toast.LENGTH_SHORT).show();
+               return@setOnClickListener
+           }
 
 
-           Log.e("ddasdd", orderIdx)
+           Log.d("ddasdd", orderIdx)
 
            val orderId = orderIdx.toInt()
+           val agentIdint = agentId.toInt()
 
-            val orderDataModelObj:OrdersModel = OrdersModel(orderId,orderDate,clientName,orderStatus,receiverName,deliveryAddress,phoneNo,agentId.toInt())
-            postDataToApi(orderDataModelObj)
+            val orderDataModelObj:OrdersModel = OrdersModel(orderId,orderDate,clientName,orderStatus,receiverName,deliveryAddress,phoneNo,email, agentIdint)
+           Toast.makeText(applicationContext, "Pleaent"+orderDataModelObj.order_email, Toast.LENGTH_SHORT).show();
+           postDataToApi(orderDataModelObj)
 
         }
         sessionManager = SessionManager(this)
@@ -82,7 +90,7 @@ class Add_Order : AppCompatActivity() , AdapterView.OnItemSelectedListener{
 
     private fun getDataFromApi() {
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://courierpad.herokuapp.com/api/")
+            .baseUrl("http://192.168.29.109:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)
@@ -114,8 +122,10 @@ class Add_Order : AppCompatActivity() , AdapterView.OnItemSelectedListener{
         })
     }
     private fun postDataToApi(orderDataModelObj: OrdersModel) {
+        Log.d("ddasdd", orderDataModelObj.order_email)
+        loading.startLoading()
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://courierpad.herokuapp.com/api/")
+            .baseUrl("http://192.168.29.109:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)

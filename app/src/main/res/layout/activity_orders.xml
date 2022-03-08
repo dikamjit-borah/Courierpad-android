@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrdersActivity">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+       <LinearLayout
+           android:id="@+id/llAssigned"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:padding="20dp"
+           android:orientation="vertical"
+           >
+           <ImageView
+               android:layout_width="match_parent"
+               android:layout_height="90dp"
+               android:src="@drawable/view_order"></ImageView>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Assigned Orders"
+               android:textAlignment="center"
+               android:layout_marginTop="8dp"
+               android:textStyle="bold"
+               android:textSize="15sp"
+               android:textColor="@color/myblack"
+               ></TextView>
+       </LinearLayout>
+       <LinearLayout
+           android:id="@+id/llUnassigned"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:padding="20dp"
+           android:orientation="vertical"
+           >
+           <ImageView
+               android:layout_width="match_parent"
+               android:layout_height="90dp"
+               android:src="@drawable/view_order"></ImageView>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Unassigned Orders"
+               android:textAlignment="center"
+               android:layout_marginTop="8dp"
+               android:textStyle="bold"
+               android:textSize="15sp"
+               android:textColor="@color/myblack"
+               ></TextView>
+       </LinearLayout>
+   </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
