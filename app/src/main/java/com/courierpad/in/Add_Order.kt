@@ -1,5 +1,6 @@
 package com.courierpad.`in`
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.icu.text.SimpleDateFormat
 import android.os.Build
@@ -28,6 +29,8 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class Add_Order : AppCompatActivity() , AdapterView.OnItemSelectedListener{
+    private lateinit  var cal: Calendar
+    private lateinit  var etEta: EditText
     lateinit var availableAgents:MutableList<String>
     private lateinit var selectedAgent:String
     private lateinit var sessionManager: SessionManager
@@ -70,14 +73,44 @@ class Add_Order : AppCompatActivity() , AdapterView.OnItemSelectedListener{
            val orderId = orderIdx.toInt()
            val agentIdint = agentId.toInt()
 
-            val orderDataModelObj:OrdersModel = OrdersModel(orderId,orderDate,clientName,orderStatus,receiverName,deliveryAddress,phoneNo,email, agentIdint)
+            val orderDataModelObj:OrdersModel = OrdersModel(orderId,orderDate,clientName,orderStatus,receiverName,deliveryAddress,phoneNo,email, agentIdint, etEta!!.text.toString())
            Toast.makeText(applicationContext, "Pleaent"+orderDataModelObj.order_email, Toast.LENGTH_SHORT).show();
            postDataToApi(orderDataModelObj)
 
         }
         sessionManager = SessionManager(this)
         availableAgents= ArrayList()
+        etEta = findViewById<EditText>(R.id.etEta)
+        cal = Calendar.getInstance()
 
+        val dateSetListener = object : DatePickerDialog.OnDateSetListener {
+            override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int,
+                                   dayOfMonth: Int) {
+                cal.set(Calendar.YEAR, year)
+                cal.set(Calendar.MONTH, monthOfYear)
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                updateDateInView()
+            }
+        }
+
+        // when you click on the button, show DatePickerDialog that is set with OnDateSetListener
+        etEta!!.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                DatePickerDialog(this@Add_Order,
+                    dateSetListener,
+                    // set DatePickerDialog to point to today's date when it loads up
+                    cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH),
+                    cal.get(Calendar.DAY_OF_MONTH)).show()
+            }
+
+        })
+
+    }
+    private fun updateDateInView() {
+        val myFormat = "MM/dd/yyyy" // mention the format you need
+        val sdf = java.text.SimpleDateFormat(myFormat, Locale.US)
+        etEta.setText(sdf.format(cal.getTime()))
     }
 
     override fun onNothingSelected(parent: AdapterView<*>) {
@@ -90,7 +123,7 @@ class Add_Order : AppCompatActivity() , AdapterView.OnItemSelectedListener{
 
     private fun getDataFromApi() {
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://192.168.29.109:3000/api/")
+            .baseUrl("http://192.168.29.21:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)
@@ -125,7 +158,7 @@ class Add_Order : AppCompatActivity() , AdapterView.OnItemSelectedListener{
         Log.d("ddasdd", orderDataModelObj.order_email)
         loading.startLoading()
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://192.168.29.109:3000/api/")
+            .baseUrl("http://192.168.29.21:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)

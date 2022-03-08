@@ -111,7 +111,7 @@ class OrdersAdapter(context: Context, orders: ArrayList<OrdersModel>) :
 
     private fun updateOrder(OrderID: String) {
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://192.168.29.109:3000/api/")
+            .baseUrl("http://192.168.29.21:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)

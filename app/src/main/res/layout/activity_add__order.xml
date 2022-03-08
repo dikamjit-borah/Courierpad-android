@@ -110,6 +110,30 @@
         android:paddingLeft="10dp"
         android:textSize="15sp"
         android:textStyle="bold"
+        /><TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="ETA"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:layout_marginBottom="6dp"
+    android:layout_marginTop="20dp"
+    android:textColor="@color/myblack"
+    />
+
+    <EditText
+        android:focusable="false"
+        android:editable="false"
+        android:id="@+id/etEta"
+        android:background="@drawable/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:inputType="date"
+        android:paddingLeft="10dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
         />
 
 

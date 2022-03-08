@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun postDataToApi(userDataObj: UserModel) {
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://192.168.29.109:3000/api/")
+            .baseUrl("http://192.168.29.21:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)

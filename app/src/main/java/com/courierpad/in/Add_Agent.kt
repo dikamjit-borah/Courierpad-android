@@ -45,7 +45,7 @@ class Add_Agent : AppCompatActivity() {
     private fun postDataToApi(agentDataModelObj: AgentModel) {
         loading.startLoading()
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://192.168.29.109:3000/api/")
+            .baseUrl("http://192.168.29.21:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)

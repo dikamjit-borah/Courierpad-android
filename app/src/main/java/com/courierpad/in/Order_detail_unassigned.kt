@@ -116,7 +116,7 @@ class Order_detail_unassigned : AppCompatActivity(), AdapterView.OnItemSelectedL
     private fun updateStatus() {
         loading.startLoading()
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://192.168.29.109:3000/api/")
+            .baseUrl("http://192.168.29.21:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)
@@ -124,7 +124,7 @@ class Order_detail_unassigned : AppCompatActivity(), AdapterView.OnItemSelectedL
         jsonObject = JsonObject()
         jsonObject.addProperty("assigned_agent_id", selectedAgent.replaceAfter(" ","").replace("#","").replace(" ", ""))
         jsonObject.addProperty("order_id", OrderID);
-        jsonObject.addProperty("order_estimated_date", "2022-02-08")
+        jsonObject.addProperty("order_estimated_date", etEta.text.toString())
 
         Log.d("TAG", "getDataFromApi:totototo "+jsonObject)
 
@@ -147,7 +147,7 @@ class Order_detail_unassigned : AppCompatActivity(), AdapterView.OnItemSelectedL
 
         loading.startLoading()
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("http://192.168.29.109:3000/api/")
+            .baseUrl("http://192.168.29.21:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)

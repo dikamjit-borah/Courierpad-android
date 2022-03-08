@@ -21,7 +21,7 @@ public class OrdersModel implements Serializable {
 //        this.updatedAt = updatedAt;
     }
 
-    public OrdersModel(int order_id, String order_date, String order_client, String order_status, String order_receiver,String order_location , String order_phone,String order_email, int order_assigned_to) {
+    public OrdersModel(int order_id, String order_date, String order_client, String order_status, String order_receiver,String order_location , String order_phone,String order_email, int order_assigned_to,String order_estimated_date) {
         this.order_id = order_id;
         this.order_date = order_date;
         this.order_client = order_client;
@@ -31,6 +31,7 @@ public class OrdersModel implements Serializable {
         this.order_status = order_status;
         this.order_assigned_to = order_assigned_to;
         this.order_email = order_email;
+        this.order_estimated_date = order_estimated_date;
     }
 
     /**
@@ -53,6 +54,7 @@ public class OrdersModel implements Serializable {
     private String order_location;
     private String order_phone;
     private String order_status;
+    String order_estimated_date;
 
     public String getOrder_email() {
         return order_email;
